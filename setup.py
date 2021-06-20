@@ -3,7 +3,7 @@ from pathlib import Path
 
 setup(
     name="treesum",
-    version="0.3.1",
+    version="0.3.1.1",
     author="Azat Akhmetov",
     author_email="azatinfo@yandex.com",
     description="Utility and library for summarizing trees.",
