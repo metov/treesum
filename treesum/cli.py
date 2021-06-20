@@ -18,19 +18,25 @@ import sys
 
 from docopt import docopt
 
-from treesum.summarize_paths import summarize_paths
-from treesum.convert import rsync_to_paths
+from treesum.convert import rsync_to_paths, paths_to_tree, summary_to_strings
+from treesum.summarize import summarize_tree
 
 
 def main():
     args = docopt(__doc__)
     n_lines = int(args["-n"]) or 10
 
+    tree = None
     if args["rsync"]:
         lines = sys.stdin.read().splitlines()
         paths = rsync_to_paths(lines)
+        tree = paths_to_tree(paths)
 
-        summarize_paths(paths, n_lines)
+    summary = summarize_tree(tree, n_lines)
+
+    strings = summary_to_strings(summary)
+    for s in strings:
+        print(s)
 
 
 if __name__ == "__main__":
