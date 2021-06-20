@@ -22,6 +22,7 @@ from treesum.summarize_paths import summarize_paths
 
 
 def main():
+    args = docopt(__doc__)
     lines = sys.stdin.read().splitlines()
     paths = rsync_to_paths(lines)
 
@@ -33,5 +34,4 @@ def main():
 
 
 if __name__ == "__main__":
-    args = docopt(__doc__)
     main()
