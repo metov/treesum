@@ -1,4 +1,4 @@
-from treesum.Node import Node
+from treesum.convert import paths_to_tree
 from treesum.summarize import summarize_tree
 
 
@@ -34,34 +34,3 @@ def summarize_paths(paths, max_lines):
     sum_lines = sorted(sum_lines, key=lambda s: s.split(" ", maxsplit=1)[1])
     for i in sum_lines:
         print(i)
-
-
-def paths_to_tree(paths, w=1):
-    """
-    Convert a list of /-delimited string paths to a tree. Terminal /es are
-    ignored.
-    """
-
-    # Strings to tree
-    root = Node("<root>")
-    for s in paths:
-        path = s.split("/")
-
-        # Ignore terminal slashes
-        if s.endswith("/"):
-            path.pop()
-
-        # Adjust tree weights
-        root.weight += w
-        n = root
-        for p in path:
-            if p not in n.children:
-                n.children[p] = Node(p)
-                n.children[p].parent = n
-
-            c = n.children[p]
-            c.weight += w
-            c.path = f"{n.path}/{p}"
-            n = c
-
-    return root
