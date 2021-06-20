@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name="treesum",
-    version="0.2.1",
+    version="0.2.2",
     description="Utility and library for summarizing trees.",
     author="Azat Akhmetov",
     author_email="azatinfo@yandex.com",

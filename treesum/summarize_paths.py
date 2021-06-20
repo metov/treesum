@@ -14,7 +14,7 @@ def summarize_paths(paths, max_lines):
     # Convert summary branches to strings
     sum_lines = []
     for i in summary:
-        s = f'{i.weight} {i.path}'
+        s = f"{i.weight} {i.path}"
         if len(i.children) > 0:
             # Mini-BFS to find all children
             n_leaves = 0
@@ -26,13 +26,12 @@ def summarize_paths(paths, max_lines):
                 else:
                     n_leaves += 1
 
-            s += f'/... [ {len(i.children)} branches, ' \
-                 f'{n_leaves} leaves not shown ]'
+            s += f"/... [ {len(i.children)} branches, " f"{n_leaves} leaves not shown ]"
 
         sum_lines.append(s)
 
     # Print in lexicographic order
-    sum_lines = sorted(sum_lines, key=lambda s: s.split(' ', maxsplit=1)[1])
+    sum_lines = sorted(sum_lines, key=lambda s: s.split(" ", maxsplit=1)[1])
     for i in sum_lines:
         print(i)
 
@@ -44,12 +43,12 @@ def paths_to_tree(paths, w=1):
     """
 
     # Strings to tree
-    root = Node('<root>')
+    root = Node("<root>")
     for s in paths:
-        path = s.split('/')
+        path = s.split("/")
 
         # Ignore terminal slashes
-        if s.endswith('/'):
+        if s.endswith("/"):
             path.pop()
 
         # Adjust tree weights
@@ -62,7 +61,7 @@ def paths_to_tree(paths, w=1):
 
             c = n.children[p]
             c.weight += w
-            c.path = f'{n.path}/{p}'
+            c.path = f"{n.path}/{p}"
             n = c
 
     return root
