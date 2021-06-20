@@ -4,7 +4,7 @@ class Node:
         self.weight = 0
         self.children = {}
         self.parent = None
-        self.path = ''
+        self.path = ""
 
     def __repr__(self):
-        return f'{self.path}: {self.weight}'
+        return f"{self.path}: {self.weight}"

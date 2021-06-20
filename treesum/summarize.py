@@ -33,8 +33,9 @@ def summarize_tree(root, max_branches):
         new_branch = Node(node.name)
         new_branch.path = node.path
         new_branch.weight = node.weight
-        new_branch.children = sorted(list(node.children.values()),
-                                     key=lambda n: n.weight)
+        new_branch.children = sorted(
+            list(node.children.values()), key=lambda n: n.weight
+        )
         return new_branch
 
     def pop_child(clump):
@@ -61,8 +62,7 @@ def summarize_tree(root, max_branches):
         #  - Whether the branch has a single child (expanding these is free
         #    and should always be done)
         #  - Weight of children (excluding already revealed children)
-        best_node = max(branches,
-                        key=lambda n: (len(n.children) == 1, n.weight))
+        best_node = max(branches, key=lambda n: (len(n.children) == 1, n.weight))
         branches.remove(best_node)
         pop_child(best_node)
 
