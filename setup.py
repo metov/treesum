@@ -11,6 +11,6 @@ setup(
         "docopt",
     ],
     entry_points={
-        "console_scripts": ["summarize_rsync=treesum.summarize_rsync:main"],
+        "console_scripts": ["treesum=treesum.cli:main"],
     },
 )
