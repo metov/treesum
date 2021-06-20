@@ -1,4 +1,4 @@
-from treesum.Node import Node
+from treesum.node import Node
 
 
 def summarize_tree(root, max_branches):

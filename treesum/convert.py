@@ -1,4 +1,4 @@
-from treesum.Node import Node
+from treesum.node import Node
 
 
 def paths_to_tree(paths, w=1):
