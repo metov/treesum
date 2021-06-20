@@ -1,4 +1,4 @@
-# `treesum`: Parsimonious Tree Summary
+# Parsimonious Tree Summary
 Do you like looking at trees, but hate scrolling?
 
 `treesum` takes a complex tree, and tries to show the most information without printing too many lines.
