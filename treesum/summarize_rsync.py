@@ -17,7 +17,6 @@ import sys
 
 from docopt import docopt
 
-from treesum.rsync_to_paths import rsync_to_paths
 from treesum.summarize_paths import summarize_paths
 
 
@@ -32,3 +31,17 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def rsync_to_paths(rsync_lines):
+    paths = []
+
+    for s in rsync_lines:
+        if s == '':
+            continue
+
+        # Remove the transfer type indicators
+        _, p = s.split(' ', maxsplit=1)
+        paths.append(p)
+
+    return paths
