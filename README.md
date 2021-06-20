@@ -6,9 +6,9 @@ Do you like looking at trees, but hate scrolling?
 The tree is expected to consist of nodes, each of which has a weight. `treesum` will expand branches with highest weight and collapse those with lowest. The weights are a measure of how much you care about different nodes of the tree: They can be file sizes, diff deltas, how much you like each item, whatever you want. If you don't provide weights, all nodes will be assumed to have a weight of 1.
 
 ## Usage
-Summarize `ls` output:
+Summarize list of paths:
 ```shell script
-ls | treesum paths
+find . | treesum paths
 ```
 
 Summarize `rsync` changelist:
