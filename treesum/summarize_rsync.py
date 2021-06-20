@@ -8,10 +8,10 @@ Run without installing:
     cat rsync.txt | python -m treesum.summarize_rsync
 
 Usage:
-    summarize_rsync [<n_lines>]
+    summarize_rsync [options]
 
 Options:
-    <n_lines>   Number of lines to output [default: 10].
+    -n <lines>  Number of lines to output [default: 10].
 """
 import sys
 
@@ -26,10 +26,7 @@ def main():
     lines = sys.stdin.read().splitlines()
     paths = rsync_to_paths(lines)
 
-    n_lines = 10
-    if args['<n_lines>'] is not None:
-        n_lines = int(args['<n_lines>'])
-
+    n_lines = int(args["-n"]) or 10
     summarize_paths(paths, n_lines)
 
 
