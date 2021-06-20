@@ -2,10 +2,7 @@
 Parses an rsync changelist, assuming a weight of 1 for every path,
 and summarizes the tree. The tree is read from standard input.
 
-For more information, see:
-
-Run without installing:
-    cat rsync.txt | python -m treesum.summarize_rsync
+For more information, see: https://github.com/metov/treesum
 
 Usage:
     summarize_rsync [options]
