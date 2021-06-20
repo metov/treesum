@@ -16,7 +16,7 @@ Summarize `rsync` changelist:
 rsync -raihP --dry-run /source/dir /dest/dir | treesum rsync
 ```
 
-You can, of course, also use `treesum` as a library. The basic method is `treesum.summarize.summarize_tree` which takes a tree constructed from `treesum.node.Node` instances. If you don't want to do this by hand, `treesum.convert` contains methods for constructing a tree from various text representations. Try looking at the implementation of `treesum.cli` for an example of how to do this.
+You can, of course, also use `treesum` as a library. The basic method is `treesum.summarize.summarize_tree` which takes a tree constructed from `treesum.summarize.Node` instances. If you don't want to do this by hand, `treesum.convert` contains methods for constructing a tree from various text representations. Try looking at the implementation of `treesum.cli` for an example of how to do this.
 
 ## Install
 Clone the repo and run `pip install .` in the repo root.
