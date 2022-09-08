@@ -1,4 +1,7 @@
 from treesum.summarize import Node
+from metovlogs import get_log
+
+log = get_log(__name__)
 
 
 def paths_to_tree(paths, w=1):

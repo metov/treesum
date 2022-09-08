@@ -13,6 +13,7 @@ setup(
     classifiers=["Development Status :: 3 - Alpha"],
     install_requires=[
         "docopt",
+        "metovlogs",
     ],
     entry_points={
         "console_scripts": ["treesum=treesum.cli:main"],
