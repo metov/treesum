@@ -1,4 +1,8 @@
+from metovlogs import get_log
+
 from treesum.summarize import Node
+
+log = get_log(__name__)
 
 
 def paths_to_tree(paths, w=1):
@@ -32,15 +36,43 @@ def paths_to_tree(paths, w=1):
     return root
 
 
+import re
+
+RE_RSYNC_SEP = re.compile("([<>ch.*][<>.*+?\w]{10})|(\*deleting ) ")
+
+
 def rsync_to_paths(rsync_lines):
     paths = []
 
-    for s in rsync_lines:
-        if s == "":
-            continue
+    # Trim header lines & find column offset
+    head = None
+    filename_start_col = None
+    for i, s in enumerate(rsync_lines):
+        if m := RE_RSYNC_SEP.search(s):
+            filename_start_col = m.end() + 1
+            head = i
+            log.debug(f"{head=}\n{m}\n{s}")
+            break
 
+    head_trimmed = rsync_lines[head:]
+
+    # Check column offset & trim footer lines
+    foot = None
+    for i, s in enumerate(head_trimmed):
+        if m := RE_RSYNC_SEP.search(s):
+            assert filename_start_col - 1 == m.end()
+        else:
+            foot = i
+            log.debug(f"{foot=}\n{s}")
+            break
+
+    assert len(head_trimmed) - foot < 100, "Seems like too many lines in footer?"
+    both_trimmed = head_trimmed[:foot]
+
+    # Find likely column offset
+    for s in both_trimmed:
         # Remove the transfer type indicators
-        _, p = s.split(" ", maxsplit=1)
+        p = s[filename_start_col:]
         paths.append(p)
 
     return paths

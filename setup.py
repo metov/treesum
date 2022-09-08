@@ -3,7 +3,7 @@ from pathlib import Path
 
 setup(
     name="treesum",
-    version="0.3.2",
+    version="0.3.3",
     author="Azat Akhmetov",
     author_email="azatinfo@yandex.com",
     description="Utility and library for summarizing trees.",
@@ -13,6 +13,7 @@ setup(
     classifiers=["Development Status :: 3 - Alpha"],
     install_requires=[
         "docopt",
+        "metovlogs",
     ],
     entry_points={
         "console_scripts": ["treesum=treesum.cli:main"],
