@@ -20,7 +20,7 @@ import sys
 
 from docopt import docopt
 
-from treesum.convert import rsync_to_paths, paths_to_tree, summary_to_strings
+from treesum.convert import paths_to_tree, rsync_to_paths, summary_to_strings
 from treesum.summarize import summarize_tree
 
 
